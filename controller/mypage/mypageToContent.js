@@ -8,9 +8,10 @@ module.exports = {
       db.Contents.findAll({
         where: {
           title: req.body.title,
+          createdAt: req.body.createdAt,
           fk_userId: req.session.session_id,
         },
-        attributes: ["title", "content", "createdAt"],
+        attributes: ["title", "content", "referenceFile", "createdAt"],
         include: [
           { model: db.Users, as: "contents", attributes: ["userId"] },
           {
